@@ -1,7 +1,9 @@
 import Server from './classes/server';
 import mongoose from 'mongoose';
-import userRoutes from './routes/usuario';
 import bodyParser from 'body-parser';
+
+import userRoutes from './routes/usuario';
+import postRoutes from './routes/post';
 
 const server = new Server();
 
@@ -11,6 +13,7 @@ server.app.use( bodyParser.json() );
 
 //Rutas app
 server.app.use('/user', userRoutes)
+server.app.use('/posts', postRoutes)
 
 // Conectar DB
 mongoose.connect('mongodb+srv://amarianjel:angelito1993@cluster0.skd2tj9.mongodb.net/fotosgram').catch(error => handleError(error));
