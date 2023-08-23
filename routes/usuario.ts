@@ -85,12 +85,15 @@ userRoutes.post('/update', verificaToken, (req: any, res: Response ) => {
         avatar: req.body.avatar || req.usuario.avatar
     }
 
-
-    // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7Il9pZCI6IjY0ZTY3OGFmYjcxY2Y4NjMyMTBmNWYwMCIsIm5vbWJyZSI6IkFicmFoYW0gTWFyaWFuamVsIiwiZW1haWwiOiJhYnJhaGFtLm1hcmlhbmplbEBnbWFpbC5jb20iLCJhdmF0YXIiOiJhdi0xLnBuZyJ9LCJpYXQiOjE2OTI4MjU3NzUsImV4cCI6MTY5NTQxNzc3NX0.6OGm9xA3YTbe3kQGuUjruHdNN7crQF-OTx9Nw_yvUjw
     try{
         // Verificar id
         // const userDB = await Usuario.findByIdAndUpdate({ req.usuario._id });
 
+        // README: Aqui lo lee desde el mismo token
+        res.json({
+            ok:true,
+            usuario: req.usuario
+        })
         console.log(req)
 
     }catch (error){
