@@ -77,7 +77,7 @@ userRoutes.post('/login', async(req: Request, res: Response ) => {
 });
 
 // Actualizar usuario
-userRoutes.post('/update', verificaToken, (req: any, res: Response ) => {
+userRoutes.post('/update', verificaToken, async(req: any, res: Response ) => {
 
     const user = {
         nombre: req.body.nombre || req.usuario.nombre,
@@ -87,14 +87,27 @@ userRoutes.post('/update', verificaToken, (req: any, res: Response ) => {
 
     try{
         // Verificar id
-        // const userDB = await Usuario.findByIdAndUpdate({ req.usuario._id });
+        const userDB = await Usuario.findByIdAndUpdate( req.usuario._id, user, { new: true } );
 
-        // README: Aqui lo lee desde el mismo token
+        if ( !userDB ) {
+            return res.json({
+                ok: false,
+                mensaje: 'No existe un usuario con ese ID'
+            });
+        }
+
+        const tokenUser = Token.getJwtToken({
+            _id: userDB._id,
+            nombre: userDB.nombre,
+            email: userDB.email,
+            avatar: userDB.avatar
+        });
+
         res.json({
-            ok:true,
-            usuario: req.usuario
-        })
-        console.log(req)
+            ok: true,
+            token: tokenUser,
+            user: userDB
+        });
 
     }catch (error){
         console.log(error);
@@ -103,33 +116,6 @@ userRoutes.post('/update', verificaToken, (req: any, res: Response ) => {
             msg: 'Hable con el administrador'
         })
     }
-
-    // Usuario.findByIdAndUpdate( req.usuario._id, user, { new: true }, (err, userDB) => {
-
-    //     if ( err ) throw err;
-
-    //     if ( !userDB ) {
-    //         return res.json({
-    //             ok: false,
-    //             mensaje: 'No existe un usuario con ese ID'
-    //         });
-    //     }
-
-    //     const tokenUser = Token.getJwtToken({
-    //         _id: userDB._id,
-    //         nombre: userDB.nombre,
-    //         email: userDB.email,
-    //         avatar: userDB.avatar
-    //     });
-
-    //     res.json({
-    //         ok: true,
-    //         token: tokenUser
-    //     });
-
-
-    // });
-
 });
 
 
