@@ -39,23 +39,22 @@ userRoutes.post('/create', ( req: Request, res: Response ) => {
 });
 
 // Login
-userRoutes.post('/login', async (req: Request, res: Response ) => {
+userRoutes.post('/login', async(req: Request, res: Response ) => {
 
-    const { loginEmail, loginPassword } = req.body;
-
+    const { email, password } = req.body;
+    
     try {
         // Verificar email
-        const userDB = await Usuario.findOne({ loginEmail });
-
+        const userDB = await Usuario.findOne({ email });
+        
         if (!userDB) {
             return res.status(404).json({
                 ok: false,
-                msg: 'Email no encontrado'
+                msg: `Email ${email} no encontrado`
             });
         }
-
-        // Verificar contraseña
-        if ( userDB.compararPassword( loginPassword ) ) {
+        //Verificar contraseña
+        if ( userDB.compararPassword( password ) ) {
             const tokenUser = Token.getJwtToken({
                 _id: userDB._id,
                 nombre: userDB.nombre,
@@ -78,7 +77,7 @@ userRoutes.post('/login', async (req: Request, res: Response ) => {
 });
 
 // Actualizar usuario
-userRoutes.post('/update', verificaToken, async (req: any, res: Response ) => {
+userRoutes.post('/update', verificaToken, (req: any, res: Response ) => {
 
     const user = {
         nombre: req.body.nombre || req.usuario.nombre,
