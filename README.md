@@ -4,16 +4,16 @@
 [![forthebadge](https://img.shields.io/badge/Angular-%F0%9F%8C%8D-red.svg)](https://angular.io/)
 ![Android](https://img.shields.io/badge/Android-%F0%9F%93%B1-brightgreen)
 
-
-<p align="center">
-  <img src="https://i.postimg.cc/Dy3XXGv1/Node3.png" alt="Logo Ionic">
-</p>
-
+<div>
+  <p align="center">
+    <img src="https://i.postimg.cc/mDcHQN1y/Node.png" alt="Logo Node">
+  </p>
+</div>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## 👨‍💻 Tecnologías Usadas 👨‍💻
-<table>
+<table align="center">
   <thead>
     <tr>
       <th>Node</th>
