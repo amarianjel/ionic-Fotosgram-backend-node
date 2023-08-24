@@ -14,15 +14,18 @@ export default class FileSystem {
             const path = this.crearCarpetaUsuario( userId );
             // Nombre archivo
             const nombreArchivo = this.generarNombreUnico( file.name );
+            console.log(file.name)
+            console.log(nombreArchivo)
+
             // Mover el archivo del Temp a nuestra carpeta
-            file.mv( `${ path }/${ nombreArchivo }`, ( err: any) => {
+            // file.mv( `${ path }/${ nombreArchivo }`, ( err: any) => {
     
-                if ( err ) {
-                    reject(err);
-                } else {
-                    resolve();
-                }
-            });
+            //     if ( err ) {
+            //         reject(err);
+            //     } else {
+            //         resolve();
+            //     }
+            // });
         });
     }
 

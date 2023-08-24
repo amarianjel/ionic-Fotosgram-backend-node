@@ -2,9 +2,11 @@ import { Router, Response } from 'express';
 import { verificaToken } from '../middlewares/autentificacion';
 import { Post } from '../models/post.model';
 import { FileUpload } from '../interfaces/file-upload';
+import FileSystem from '../classes/file-system';
 
 
 const postRoutes = Router();
+const fileSystem = new FileSystem();
 
 // Crear POST
 postRoutes.post('/', [ verificaToken ], (req: any, res: Response) => {
@@ -49,7 +51,7 @@ postRoutes.get('/', async (req: any, res: Response) => {
 });
 
 // Servicio para subir archivos
-postRoutes.post( '/upload', [ verificaToken ], async (req: any, res: Response) => {
+postRoutes.post( '/upload', [ verificaToken ], (req: any, res: Response) => {
     
     if ( !req.files ) {
         return res.status(400).json({
@@ -73,6 +75,8 @@ postRoutes.post( '/upload', [ verificaToken ], async (req: any, res: Response) =
             mensaje: 'Lo que subió no es una imagen'
         }); 
     }
+
+    fileSystem.guardarImagenTemporal( file, req.usuario._id );
 
     res.status(400).json({
         ok:false,
