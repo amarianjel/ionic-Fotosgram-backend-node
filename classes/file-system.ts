@@ -18,14 +18,14 @@ export default class FileSystem {
             console.log(nombreArchivo)
 
             // Mover el archivo del Temp a nuestra carpeta
-            // file.mv( `${ path }/${ nombreArchivo }`, ( err: any) => {
+            file.mv( `${ path }/${ nombreArchivo }`, ( err: any) => {
     
-            //     if ( err ) {
-            //         reject(err);
-            //     } else {
-            //         resolve();
-            //     }
-            // });
+                if ( err ) {
+                    reject(err);
+                } else {
+                    resolve();
+                }
+            });
         });
     }
 
