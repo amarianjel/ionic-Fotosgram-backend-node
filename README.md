@@ -77,6 +77,7 @@ npm i --save-dev @types/express
 npm i --save-dev @types/bcrypt
 npm i --save-dev @types/express-fileupload
 npm i --save-dev @types/uniqid
+npm i --save-dev @types/cors
 ```
 
 ## Modo de observador typescript
