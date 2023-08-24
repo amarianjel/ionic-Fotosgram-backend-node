@@ -12,7 +12,7 @@ postRoutes.post('/', [ verificaToken ], (req: any, res: Response) => {
 
     Post.create( body ).then( async postDB => {
 
-        await postDB.populate('usuario', '-password')
+        await postDB.populate('usuario', '-password');
 
         res.json({
             ok: true,
@@ -25,5 +25,27 @@ postRoutes.post('/', [ verificaToken ], (req: any, res: Response) => {
 
 });
 
+// Obtener POST paginados
+postRoutes.get('/', async (req: any, res: Response) => {
+
+    let pagina = Number(req.query.pagina) || 1;
+    let skip = pagina - 1;
+    skip = skip * 10;
+
+    const posts = await Post.find()
+                            .sort({ _id: -1 })
+                            .skip( skip )
+                            .limit(10)
+                            .populate('usuario', '-password')
+                            .exec();
+
+    res.json({
+        ok: true,
+        pagina,
+        posts
+    });
+
+
+});
 
 export default postRoutes;
