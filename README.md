@@ -6,7 +6,7 @@
 
 <div>
   <p align="center">
-    <img src="https://i.postimg.cc/mDcHQN1y/Node.png" alt="Logo Node">
+    <img src="https://i.postimg.cc/Dy3XXGv1/Node3.png" alt="Logo Node">
   </p>
 </div>
 
