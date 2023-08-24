@@ -12,3 +12,4 @@ node_modules
 
 # Ignorar las carpetas
 dist
+tmp

@@ -31,6 +31,7 @@ npm install mongoose
 npm install express-fileupload
 npm install jsonwebtoken
 npm install bcrypt
+npm i uniqid
 
 npm install express body-parser cors mongoose express-fileupload jsonwebtoken bcrypt
 ```
@@ -39,6 +40,8 @@ npm install express body-parser cors mongoose express-fileupload jsonwebtoken bc
 ```
 npm i --save-dev @types/express
 npm i --save-dev @types/bcrypt
+npm i --save-dev @types/express-fileupload
+npm i --save-dev @types/uniqid
 ```
 
 ## Modo de observador typescript
