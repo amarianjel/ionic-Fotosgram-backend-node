@@ -13,7 +13,7 @@ userRoutes.post('/create', ( req: Request, res: Response ) => {
         nombre   : req.body.nombre,
         email    : req.body.email,
         password : bcrypt.hashSync(req.body.password, 10),
-        // avatar   : req.body.avatar
+        avatar   : req.body.avatar
     };
 
     Usuario.create( user ).then( userDB => {
